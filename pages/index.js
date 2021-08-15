@@ -1,28 +1,22 @@
 import Head from 'next/head';
+import { Fragment } from 'react';
 
-export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>BlogPop v2.0</title>
-        <meta
-          type="description"
-          content="BlogPop by Georgey, the latest and the hottest curated articles"
-        ></meta>
-      </Head>
-      <nav className="">
-        <a>
-          <h2>BlogPop v2.0</h2>
-        </a>
-      </nav>
-    </div>
-  );
-}
+import Hero from '@/components/Home-page/Hero/Hero';
+import FeaturedPosts from '@/components/Home-page/FeaturedPosts/FeaturedPosts';
+
 function HomePage() {
   return (
-    <div>
-      <h3>Welcome to BlogPop v2.0</h3>
-    </div>
+    <Fragment>
+      <Head>
+        <title>Home: BlogPop v2.0</title>
+        <meta
+          name="description"
+          content="BlogPop, a blog page maintained by Georgey: a web developer hailing from Goa, India!"
+        />
+      </Head>
+      <Hero />
+      <FeaturedPosts />
+    </Fragment>
   );
 }
 
