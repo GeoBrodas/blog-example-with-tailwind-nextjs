@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function PostCard(props) {
-  console.log(props);
+  // console.log(props);
   const { title, excerpt, image, date, slug } = props.data; //change to props.post as it will be a object receieved from getStaticProps
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
@@ -40,6 +40,7 @@ export default function PostCard(props) {
           alt={title}
           width={720}
           height={400}
+          layout="responsive"
         />
         <div className="flex-grow mt-2">
           <p className="leading-relaxed text-base">{excerpt}</p>
