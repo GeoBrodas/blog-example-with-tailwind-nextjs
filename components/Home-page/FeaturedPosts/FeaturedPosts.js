@@ -1,4 +1,5 @@
 import PostCard from '@/components/ui/Post-card';
+import PostGrid from '@/components/ui/Post-grid';
 
 export default function FeaturedPosts(props) {
   const { posts } = props;
@@ -14,11 +15,11 @@ export default function FeaturedPosts(props) {
             Featured Posts
           </h1>
         </div>
-        <div class="flex flex-wrap -m-4">
+        <PostGrid>
           {posts.map((post) => (
             <PostCard key={post.slug} data={post} />
           ))}
-        </div>
+        </PostGrid>
       </div>
     </section>
   );
