@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function PostCard(props) {
   // console.log(props);
-  const { title, excerpt, image, date, slug } = props.data; //change to props.post as it will be a object receieved from getStaticProps
+  const { title, excerpt, image, date, slug } = props.data;
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long',
@@ -35,7 +35,6 @@ export default function PostCard(props) {
           </h2>
         </div>
         <Image
-          class="lg:h-48 md:h-36 w-full object-cover object-center"
           src={filePath}
           alt={title}
           width={720}
@@ -47,7 +46,7 @@ export default function PostCard(props) {
           <p className="leading-relaxed text-base">{formattedDate}</p>
           <Link
             passhref
-            href="/"
+            href={`posts/${slug}`}
             className="mt-3 text-red-500 inline-flex items-center"
           >
             <a className="flex flex-row mt-2 italic">

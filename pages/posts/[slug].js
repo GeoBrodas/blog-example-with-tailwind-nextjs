@@ -1,9 +1,11 @@
+import PostContent from '@/components/Post-detail/PostContent';
+import { useRouter } from 'next/router';
+
 function Post() {
-  return (
-    <div>
-      <h3>All posts of BlogPop</h3>
-    </div>
-  );
+  const router = useRouter();
+  // console.log(router.query);
+
+  return <PostContent />;
 }
 
 export default Post;
