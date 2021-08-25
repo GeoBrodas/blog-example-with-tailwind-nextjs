@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown';
+
 const DUMMY_POSTS = {
   title: 'Gettign Started with typeScript',
   image: 'getting-started-with-typescript.png',
@@ -17,7 +19,7 @@ export default function PostContent() {
         title={DUMMY_POSTS.title}
         image={imagePath}
       />
-      {DUMMY_POSTS.content}
+      <ReactMarkdown>{DUMMY_POSTS.content}</ReactMarkdown>
     </article>
   );
 }

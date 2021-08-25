@@ -3,35 +3,9 @@ import { Fragment } from 'react';
 
 import Hero from '@/components/Home-page/Hero/Hero';
 import FeaturedPosts from '@/components/Home-page/FeaturedPosts/FeaturedPosts';
+import { getFeaturedPosts } from '@/helpers/posts-util';
 
-const DUMMY_POSTS = [
-  {
-    title: 'Gettign Started with typeScript',
-    excerpt:
-      'TypeScript is a superset to Javascript, as it acts like a compiler to detect early errors',
-    image: 'getting-started-with-typescript.png',
-    date: '2021-08-17',
-    slug: 'getting-started-with-typescript',
-  },
-  {
-    title: 'Gettign Started with typeScript',
-    excerpt:
-      'TypeScript is a superset to Javascript, as it acts like a compiler to detect early errors',
-    image: 'getting-started-with-typescript.png',
-    date: '2021-08-17',
-    slug: 'getting-started-with-typescript',
-  },
-  {
-    title: 'Gettign Started with typeScript',
-    excerpt:
-      'TypeScript is a superset to Javascript, as it acts like a compiler to detect early errors',
-    image: 'getting-started-with-typescript.png',
-    date: '2021-08-17',
-    slug: 'getting-started-with-typescript',
-  },
-];
-
-function HomePage() {
+function HomePage(props) {
   return (
     <Fragment>
       <Head>
@@ -42,9 +16,19 @@ function HomePage() {
         />
       </Head>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      <FeaturedPosts posts={props.posts} />
     </Fragment>
   );
+}
+
+export function getStaticProps() {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
 }
 
 export default HomePage;
