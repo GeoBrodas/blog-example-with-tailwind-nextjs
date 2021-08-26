@@ -4,13 +4,19 @@ import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'database');
 
+// fetch the file names from database directory
+export function getPostFileNames() {
+  return fs.readdirSync(postsDirectory);
+}
+
 // gets the specific data of a given file ONLY! SINGLE FILE ONLY!!
-function getPostData(fileName) {
-  const filePath = path.join(postsDirectory, fileName);
+// works when exported and also when called by any other function for eg: getAllPosts ,
+// replace function will not execute if the fileName still does'nt contain the .md extension
+export function getPostData(postIdentifier) {
+  const postSlug = postIdentifier.replace(/\.md$/, '');
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
-
-  const postSlug = fileName.replace(/\.md$/, '');
 
   const postData = {
     slug: postSlug,
@@ -23,7 +29,7 @@ function getPostData(fileName) {
 
 // gets the data of all the posts together using the above function
 export function getAllPosts() {
-  const postFiles = fs.readdirSync(postsDirectory);
+  const postFiles = getPostFileNames(); // get file name from database -> .md files
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
   });

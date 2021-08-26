@@ -2,7 +2,7 @@
 title: 'Best Web Development Setup'
 date: '2020-08-20'
 image: best-web-development-setup.png
-excerpt: Linux, VSCOde, WSL, whichs etup is the best for you? Go ahead and read what Georgey has to say about it!
+excerpt: Linux, VSCOde, WSL, which setup is the best for you? Go ahead and read what Georgey has to say about it!
 isFeatured: false
 ---
 
