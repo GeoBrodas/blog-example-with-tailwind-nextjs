@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import PostHeader from './PostHeader';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import Image from 'next/image';
 
@@ -46,8 +46,9 @@ export default function PostContent(props) {
       const language = className.split('-')[1];
       return (
         <SyntaxHighlighter
+          className="max-w-2xl"
           language={language}
-          styles={dracula}
+          styles={atomDark}
           children={children}
         />
       );
@@ -60,7 +61,11 @@ export default function PostContent(props) {
         <title>{title}</title>
       </Head>
       <PostHeader slug={slug} title={title} image={imagePath} />
-      <ReactMarkdown components={customRenderers}>{content}</ReactMarkdown>
+      <div className="flex flex-wrap content-center items">
+        <ReactMarkdown className="max-w-5xl" components={customRenderers}>
+          {content}
+        </ReactMarkdown>
+      </div>
     </article>
   );
 }
