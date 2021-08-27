@@ -8,7 +8,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
 
 export default function PostContent(props) {
-  const { slug, content, title, image } = props.data;
+  const { slug, content, title, image, excerpt } = props.data;
   // console.log(slug);
   const imagePath = `/posts/${slug}/${image}`;
 
@@ -59,6 +59,7 @@ export default function PostContent(props) {
     <article>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={excerpt} />
       </Head>
       <PostHeader slug={slug} title={title} image={imagePath} />
       <div className="flex flex-wrap content-center items">
